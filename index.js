@@ -3,7 +3,7 @@ const app = express();
 
 //Routes for our port to listen for
 app.get('/', (req, res) => {
-    res.send({hi: 'there'})
+    res.send({bye: 'buddy'})
 });
 
 //Ask heroku which port to listen to or set it to localhost:5000
