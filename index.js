@@ -7,8 +7,17 @@ const app = express();
 //Creates a new instance of the Google passport strategy
 passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret
+    clientSecret: keys.googleClientSecret,
+    callbackURL: '/auth/google/callback'
+  }, (accessToken) => {
+    console.log(accessToken);
   })
+);
+
+app.get('/auth/google', 
+    passport.authenticate('google', {
+        scope: ['profile', 'email']
+ })
 );
 
 //Ask heroku which port to listen to or set it to localhost:5000
